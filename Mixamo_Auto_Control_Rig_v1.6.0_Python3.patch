@@ -1,0 +1,289 @@
+diff --git a/MayaAutoControlRig/Controls/FacialControls.py b/MayaAutoControlRig/Controls/FacialControls.py
+index 5001dff..c350639 100644
+--- a/MayaAutoControlRig/Controls/FacialControls.py
++++ b/MayaAutoControlRig/Controls/FacialControls.py
+@@ -7 +7 @@ import maya.cmds as mayac
+-import ComboControls
+\ No newline at end of file
++from . import ComboControls
+\ No newline at end of file
+diff --git a/MayaAutoControlRig/Controls/UI.py b/MayaAutoControlRig/Controls/UI.py
+index 09d1af1..e586168 100644
+--- a/MayaAutoControlRig/Controls/UI.py
++++ b/MayaAutoControlRig/Controls/UI.py
+@@ -8 +8 @@ import pymel.core as pm
+-import SimpleCurves
++from . import SimpleCurves
+@@ -58 +58 @@ class ControlUI():
+-        print "CREATE ICONS"
++        print("CREATE ICONS")
+@@ -77 +77 @@ def create():
+-    print iconPath
++    print(iconPath)
+diff --git a/MayaAutoControlRig/Controls/__init__.py b/MayaAutoControlRig/Controls/__init__.py
+index b4f3d21..2a05d83 100644
+--- a/MayaAutoControlRig/Controls/__init__.py
++++ b/MayaAutoControlRig/Controls/__init__.py
+@@ -7,4 +7,5 @@ Handles:
+-import SimpleCurves
+-import ComboControls
+-import FacialControls
+-import UI
++import importlib
++from . import SimpleCurves
++from . import ComboControls
++from . import FacialControls
++from . import UI
+@@ -12,4 +13,4 @@ import UI
+-reload(SimpleCurves)
+-reload(ComboControls)
+-reload(FacialControls)
+-reload(UI)
+\ No newline at end of file
++importlib.reload(SimpleCurves)
++importlib.reload(ComboControls)
++importlib.reload(FacialControls)
++importlib.reload(UI)
+diff --git a/MayaAutoControlRig/DJB_Character/Character.py b/MayaAutoControlRig/DJB_Character/Character.py
+index c7fbb58..45e5c17 100644
+--- a/MayaAutoControlRig/DJB_Character/Character.py
++++ b/MayaAutoControlRig/DJB_Character/Character.py
+@@ -7,4 +7,4 @@ from MayaAutoControlRig.Utils import *
+-from CharacterNode import *
+-from BlendshapeTracker import *
+-import FacialControls
+-import FacePlus
++from .CharacterNode import *
++from .BlendshapeTracker import *
++from . import FacialControls
++from . import FacePlus
+@@ -18 +18 @@ import re
+-import cPickle
++import pickle as cPickle
+@@ -242 +242 @@ class DJB_Character():
+-            print "ASPDOIJASDPOIJASPDOIJASD"
++            print("ASPDOIJASDPOIJASPDOIJASD")
+@@ -248 +248 @@ class DJB_Character():
+-                        print self.joints[i]
++                        print(self.joints[i])
+@@ -251 +251 @@ class DJB_Character():
+-                                print "\t%s"%check
++                                print("\t%s"%check)
+@@ -281,2 +281,2 @@ class DJB_Character():
+-                    print "adspofapsdofijasdf"
+-                    print self.joint_namespace
++                    print("adspofapsdofijasdf")
++                    print(self.joint_namespace)
+@@ -284 +284 @@ class DJB_Character():
+-                    print "adspofapsdofijasdf"
++                    print("adspofapsdofijasdf")
+@@ -402 +402 @@ class DJB_Character():
+-            print self.characterNameSpace
++            print(self.characterNameSpace)
+@@ -2017 +2017 @@ class DJB_Character():
+-        print self.FacialControls.blendshapeNodes
++        print(self.FacialControls.blendshapeNodes)
+@@ -2030 +2030 @@ class DJB_Character():
+-            print bodyPart.nodeName
++            print(bodyPart.nodeName)
+@@ -3191 +3191 @@ class DJB_Character():
+-            print "failing because of hula"
++            print("failing because of hula")
+@@ -3197 +3197 @@ class DJB_Character():
+-                    print "failing becuase of %s%s not existing"%(New_joint_Namespace, bodyPart.nodeName)
++                    print("failing becuase of %s%s not existing"%(New_joint_Namespace, bodyPart.nodeName))
+@@ -3207 +3207 @@ class DJB_Character():
+-                                    print "failing becuase of %s%s not existing"%(New_joint_Namespace, child.nodeName)
++                                    print("failing becuase of %s%s not existing"%(New_joint_Namespace, child.nodeName))
+@@ -3215 +3215 @@ class DJB_Character():
+-                                        print "Failing because proportions are incorrect for %s%s"%(New_joint_Namespace, bodyPart.nodeName)
++                                        print("Failing because proportions are incorrect for %s%s"%(New_joint_Namespace, bodyPart.nodeName))
+@@ -3219 +3219 @@ class DJB_Character():
+-                                    print "Failing because rotation Orders are incorrect for %s%s"%(New_joint_Namespace, bodyPart.nodeName)
++                                    print("Failing because rotation Orders are incorrect for %s%s"%(New_joint_Namespace, bodyPart.nodeName))
+@@ -3346 +3346 @@ class DJB_Character():
+-                            print meshShape
++                            print(meshShape)
+@@ -4037 +4037 @@ class DJB_Character():
+-                    print node.nodeName
++                    print(node.nodeName)
+@@ -4152 +4152 @@ class DJB_Character():
+-            print "KEEPING MESH!!!"
++            print("KEEPING MESH!!!")
+@@ -4320 +4320 @@ class DJB_Character():
+-            print element
++            print(element)
+diff --git a/MayaAutoControlRig/DJB_Character/CharacterNode.py b/MayaAutoControlRig/DJB_Character/CharacterNode.py
+index 1e151ce..50047c4 100644
+--- a/MayaAutoControlRig/DJB_Character/CharacterNode.py
++++ b/MayaAutoControlRig/DJB_Character/CharacterNode.py
+@@ -14 +14 @@ import re
+-import cPickle
++import pickle as cPickle
+@@ -487 +487 @@ class DJB_CharacterNode():
+-                print "exactSizeNotFunctionalYet"
++                print("exactSizeNotFunctionalYet")
+@@ -510 +510 @@ class DJB_CharacterNode():
+-                print "exactSizeNotFunctionalYet"
++                print("exactSizeNotFunctionalYet")
+@@ -539 +539 @@ class DJB_CharacterNode():
+-                print "exactSizeNotFunctionalYet"
++                print("exactSizeNotFunctionalYet")
+@@ -566 +566 @@ class DJB_CharacterNode():
+-                print "exactSizeNotFunctionalYet"
++                print("exactSizeNotFunctionalYet")
+@@ -598 +598 @@ class DJB_CharacterNode():
+-                print "exactSizeNotFunctionalYet"
++                print("exactSizeNotFunctionalYet")
+@@ -613 +613 @@ class DJB_CharacterNode():
+-                print "exactSizeNotFunctionalYet"
++                print("exactSizeNotFunctionalYet")
+@@ -629 +629 @@ class DJB_CharacterNode():
+-                print "exactSizeNotFunctionalYet"
++                print("exactSizeNotFunctionalYet")
+@@ -646 +646 @@ class DJB_CharacterNode():
+-                print "exactSizeNotFunctionalYet"       
++                print("exactSizeNotFunctionalYet")
+@@ -663 +663 @@ class DJB_CharacterNode():
+-                print "exactSizeNotFunctionalYet"
++                print("exactSizeNotFunctionalYet")
+@@ -677 +677 @@ class DJB_CharacterNode():
+-                print "exactSizeNotFunctionalYet"
++                print("exactSizeNotFunctionalYet")
+@@ -701 +701 @@ class DJB_CharacterNode():
+-                print "exactSizeNotFunctionalYet"
++                print("exactSizeNotFunctionalYet")
+diff --git a/MayaAutoControlRig/DJB_Character/FacePlus.py b/MayaAutoControlRig/DJB_Character/FacePlus.py
+index 862e0ad..6edf7b6 100644
+--- a/MayaAutoControlRig/DJB_Character/FacePlus.py
++++ b/MayaAutoControlRig/DJB_Character/FacePlus.py
+@@ -273,3 +273,3 @@ def setKeyOpposites(ibs, iA, iB, iFrame, curFrame, CTRL, att):
+-        print ibs
+-        print iA
+-        print iFrame
++        print(ibs)
++        print(iA)
++        print(iFrame)
+diff --git a/MayaAutoControlRig/DJB_Character/FacialControls.py b/MayaAutoControlRig/DJB_Character/FacialControls.py
+index 05a0192..15b6601 100644
+--- a/MayaAutoControlRig/DJB_Character/FacialControls.py
++++ b/MayaAutoControlRig/DJB_Character/FacialControls.py
+@@ -8 +8 @@ from MayaAutoControlRig.Utils.General import *
+-import FacePlusRig
++from . import FacePlusRig
+@@ -138 +138 @@ class FacialControls(object):
+-            print self.mesh[i]
++            print(self.mesh[i])
+@@ -160 +160 @@ class FacialControls(object):
+-                                print "\tChecking %s"%(blendShapeNode)
++                                print("\tChecking %s"%(blendShapeNode))
+@@ -164 +164 @@ class FacialControls(object):
+-                                        print "valid"
++                                        print("valid")
+@@ -168 +168 @@ class FacialControls(object):
+-            print "No valid blendshape sets to apply rig to"
++            print("No valid blendshape sets to apply rig to")
+@@ -173 +173 @@ class FacialControls(object):
+-        print "Setting up Facial Rig"
++        print("Setting up Facial Rig")
+@@ -177 +177 @@ class FacialControls(object):
+-            print filePath
++            print(filePath)
+@@ -215 +215 @@ class FacialControls(object):
+-                    print "NO MATCH FOR %s"%attr
++                    print("NO MATCH FOR %s"%attr)
+diff --git a/MayaAutoControlRig/DJB_Character/__init__.py b/MayaAutoControlRig/DJB_Character/__init__.py
+index 5e2f040..1c0bece 100644
+--- a/MayaAutoControlRig/DJB_Character/__init__.py
++++ b/MayaAutoControlRig/DJB_Character/__init__.py
+@@ -6,5 +6,5 @@ Created on Apr 11, 2014
+-import Character
+-import CharacterNode
+-import BlendshapeTracker
+-import FacialControls
+-import FacePlus
+\ No newline at end of file
++from . import Character
++from . import CharacterNode
++from . import BlendshapeTracker
++from . import FacialControls
++from . import FacePlus
+\ No newline at end of file
+diff --git a/MayaAutoControlRig/UI/Main_UI.py b/MayaAutoControlRig/UI/Main_UI.py
+index 32df1b2..7e792f7 100644
+--- a/MayaAutoControlRig/UI/Main_UI.py
++++ b/MayaAutoControlRig/UI/Main_UI.py
+@@ -9 +9 @@ import maya.mel as mel
+-import Version_Info
++from . import Version_Info
+@@ -11 +11 @@ import MayaAutoControlRig.DJB_Character as DJB_Character
+-from AssortedFunctions import *
++from .AssortedFunctions import *
+diff --git a/MayaAutoControlRig/UI/__init__.py b/MayaAutoControlRig/UI/__init__.py
+index 2659775..c3821c2 100644
+--- a/MayaAutoControlRig/UI/__init__.py
++++ b/MayaAutoControlRig/UI/__init__.py
+@@ -6,3 +6,3 @@ Handles:
+-import Main_UI
+-import Version_Info
+-import AssortedFunctions
+\ No newline at end of file
++from . import Main_UI
++from . import Version_Info
++from . import AssortedFunctions
+\ No newline at end of file
+diff --git a/MayaAutoControlRig/Utils/General.py b/MayaAutoControlRig/Utils/General.py
+index 084c8f0..fbbe9d6 100644
+--- a/MayaAutoControlRig/Utils/General.py
++++ b/MayaAutoControlRig/Utils/General.py
+@@ -12 +12,2 @@ import re
+-import cPickle
++import pickle as cPickle
++import base64
+@@ -229 +230,3 @@ def pyToAttr(objAttr, data):
+-    stringData = cPickle.dumps(data)
++    # Python 3 pickle returns bytes; encode as ASCII-safe text for Maya string attributes.
++    pickleData = cPickle.dumps(data, protocol=cPickle.HIGHEST_PROTOCOL)
++    stringData = base64.b64encode(pickleData).decode('ascii')
+@@ -235,3 +238,14 @@ def attrToPy(objAttr):
+-        stringAttrData = str(mayac.getAttr(objAttr))
+-        loadedData = cPickle.loads(stringAttrData)
+-        return loadedData
++        stringAttrData = mayac.getAttr(objAttr)
++        if stringAttrData is None:
++            return None
++        # New Python 3/base64 format.
++        try:
++            pickleData = base64.b64decode(stringAttrData.encode('ascii'), validate=True)
++            return cPickle.loads(pickleData)
++        except Exception:
++            pass
++        # Best-effort compatibility with old Python 2 string pickles.
++        try:
++            return cPickle.loads(str(stringAttrData).encode('latin1'), encoding='latin1')
++        except Exception:
++            return None
+diff --git a/MayaAutoControlRig/Utils/__init__.py b/MayaAutoControlRig/Utils/__init__.py
+index ea374f7..2a0970f 100644
+--- a/MayaAutoControlRig/Utils/__init__.py
++++ b/MayaAutoControlRig/Utils/__init__.py
+@@ -6,3 +6,3 @@ Handles:
+-from General import *
+-from ZV_Dynamics import *
+-from Fix_Eye_Placement import *
+\ No newline at end of file
++from .General import *
++from .ZV_Dynamics import *
++from .Fix_Eye_Placement import *
+\ No newline at end of file
+diff --git a/MayaAutoControlRig/__init__.py b/MayaAutoControlRig/__init__.py
+index 207f9af..a7f06a3 100644
+--- a/MayaAutoControlRig/__init__.py
++++ b/MayaAutoControlRig/__init__.py
+@@ -6,3 +6,3 @@ Handles:
+-import Utils
+-import DJB_Character
+-import UI
++from . import Utils
++from . import DJB_Character
++from . import UI
