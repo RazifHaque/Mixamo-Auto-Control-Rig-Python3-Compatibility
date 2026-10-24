@@ -1,0 +1,1 @@
+# Mixamo-Auto-Control-Rig-Python3-Compatibility
